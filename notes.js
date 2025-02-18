@@ -37,3 +37,7 @@
 // build out the frontend / homepage 
 
 // install sass, each page its own scss file 
+
+// properly link to the create account page, 
+
+// 
