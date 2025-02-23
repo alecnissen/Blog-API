@@ -40,4 +40,22 @@
 
 // properly link to the create account page, 
 
-// 
+// properly create the user, 
+
+// you will have to enforce rules when creating the user such as character length 
+
+// look back at file uploader for ideas 
+
+// validation and sanitation the inputs 
+
+// once that is done the user must be properly stored in the database
+
+
+
+// validation checks for frontend and backend 
+
+// apply frontend validation checks and display messages when user 
+
+// does not meet the requirements such as username length and password length 
+
+// use react and state to manage this 
