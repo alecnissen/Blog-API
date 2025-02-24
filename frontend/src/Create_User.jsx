@@ -23,7 +23,7 @@ export default function Create_User() {
 
   return (
    <> 
-   <form>
+   <form method='post' action='/create_user_form'>
     <label>Username</label>
     <input type="text" placeholder="username" onChange={handleChangeUsername}></input>
 
