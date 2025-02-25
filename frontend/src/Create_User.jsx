@@ -1,34 +1,49 @@
 import React, { useState } from 'react'
+import axios from 'axios';
+
+
 
 
 export default function Create_User() {
 
-  let [usernameInput, setUsernameInput ] = useState('');
+const handleChange = (e) => { 
+  const { name, value } = e.target;
+  setCreateUserFormData({
+    ...createUserFormData,
+    [name]: value
+  });
+} 
 
-  let [passwordInput, setPasswordInput ] = useState('');
+  let [createUserFormData, setCreateUserFormData] = useState({
+    username: '',
+    password: ''
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   
+    axios.post("http://localhost:3000/create_user_form/create_user", createUserFormData)
+
+    .then((response) => {
+      console.log(response.status, response.data);
+    })
+
+    .catch((error) => {
+      console.log(error);
+      alert("Submission Failed");
+    })
 
 
-
-  function handleChangeUsername(e) {
-    setUsernameInput(e.target.value);
-  }
-
-  function handleChangePassword(e) {
-    setPasswordInput(e.target.value);
-  }
-
-  console.log(usernameInput)
-
-  console.log(passwordInput)
+  }; 
 
   return (
    <> 
-   <form method='post' action='/create_user_form'>
+   <form method='post' onSubmit={handleSubmit}>
     <label>Username</label>
-    <input type="text" placeholder="username" onChange={handleChangeUsername}></input>
+    <input type="text" placeholder="username" name='username' value={createUserFormData.username} onChange={handleChange}></input>
 
     <label>Password</label>
-    <input type="text" placeholder="password" onChange={handleChangePassword}></input>
+    <input type="text" placeholder="password" name='password' value={createUserFormData.password} onChange={handleChange}></input>
 
     <button type='submit'>Create User</button>
    </form>
