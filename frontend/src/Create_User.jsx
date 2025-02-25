@@ -28,6 +28,11 @@ const handleChange = (e) => {
       console.log(response.status, response.data);
     })
 
+    setCreateUserFormData({
+      username: '',
+      password: ''
+    })
+
     .catch((error) => {
       console.log(error);
       alert("Submission Failed");

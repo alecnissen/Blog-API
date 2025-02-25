@@ -59,3 +59,5 @@
 // does not meet the requirements such as username length and password length 
 
 // use react and state to manage this 
+
+// clear form inputs after submission
