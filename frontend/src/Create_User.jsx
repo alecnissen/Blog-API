@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+let regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})");
 
 export default function Create_User() {
   const handleChange = (e) => {
@@ -20,6 +21,12 @@ export default function Create_User() {
   const validateForm = (data) => {
     const errors = {};
 
+    console.log(data.username) 
+    console.log(data.password)
+
+    console.log("Password:", data.password);
+    console.log("Regex Test:", regex.test(data.password));
+
     if (!data.username.trim()) {
       errors.username = "Username is required";
     } else if (data.username.length < 5) {
@@ -29,8 +36,9 @@ export default function Create_User() {
 
     if (!data.password) {
       errors.password = "Password is required";
-    } else if (data.password.length < 8) {
-      errors.password = "Password must be at least 8 characters long";
+    } else if (!regex.test(data.password)) {
+      console.log(regex.test(data.password))
+      errors.password = "Must contain minimum eight characters, at least one letter, one number and one special character";
 
     }
 
