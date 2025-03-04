@@ -24,17 +24,18 @@ export default function Create_User() {
       errors.username = "Username is required";
     } else if (data.username.length < 5) {
       errors.username = "Username must be at least 5 characters";
+      console.log('error creating user')
     }
 
     if (!data.password) {
       errors.password = "Password is required";
     } else if (data.password.length < 8) {
       errors.password = "Password must be at least 8 characters long";
+
     }
 
-    if (data.confirmPassword !== data.password) {
-      errors.confirmPassword = "Passwords do not match";
-    }
+
+    
 
     return errors;
   };
@@ -117,13 +118,17 @@ export default function Create_User() {
 
         <label>Password</label>
         <input
-          type="text"
+          type="password"
           placeholder="password"
           name="password"
           value={createUserFormData.password}
           onChange={handleChange}
           required
         ></input>
+
+        {formErrors.password && (
+          <span className="error-message">{formErrors.password}</span>
+        )}
 
         <button type="submit">Create User</button>
       </form>
